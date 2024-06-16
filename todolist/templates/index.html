@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif; /* Set a pleasant font */
+        margin: 20px; /* Add some margin for aesthetics */
+      }
+      
+      h1 {
+        text-align: center; /* Center the heading */
+        margin-bottom: 20px; /* Add some space below the heading */
+      }
+      
+      form {
+        display: flex; /* Arrange form elements horizontally */
+        justify-content: space-between; /* Space out form elements */
+        margin-bottom: 20px; /* Add space below the form */
+      }
+      
+      form input[type="text"] {
+        flex: 1; /* Make input field expand to fill available space */
+        padding: 10px; /* Add padding for better user experience */
+        border: 1px solid #ccc; /* Add a subtle border */
+        border-radius: 5px; /* Round corners for a softer look */
+      }
+      
+      form button {
+        padding: 10px 20px; /* Add some padding to the button */
+        background-color: #4CAF50; /* Set a green background color */
+        color: white; /* Text color in white */
+        border: none; /* Remove default button border */
+        border-radius: 5px; /* Round corners for consistency */
+        cursor: pointer; /* Indicate clickable behavior */
+      }
+      
+      ul {
+        list-style: none; /* Remove default bullet points */
+        padding: 0; /* Reset default padding */
+        margin: 0; /* Reset default margin */
+      }
+      
+      li {
+        display: flex; /* Arrange list items horizontally */
+        justify-content: space-between; /* Space out content within list items */
+        align-items: center; /* Vertically align content within list items */
+        padding: 10px; /* Add some padding for readability */
+        border-bottom: 1px solid #ccc; /* Separate list items with a line */
+        margin-bottom: 10px; /* Add some space between list items */
+      }
+      
+      a {
+        color: #007bff; /* Blue color for links */
+        text-decoration: none; /* Remove underline from links */
+      }
+      
+      a:hover {
+        text-decoration: underline; /* Underline links on hover */
+      }
+      </style>
+      
+</head>
+<body>
+    <div class="container">
+ <h1>To-Do List</h1>
+ <form action="" method="POST">
+    {% csrf_token %}
+    <input type="text" name="title" placeholder="Add a new task" required>
+    
+    <button type="submit">Add</button>
+ </form>
+ <ul>
+    {% for i in todos reversed %}
+    <li>{{i.title}}<button ><a style="text-decoration: none;" href="delete/{{i.id}}">Delete</a></button></li>
+    {% endfor %}
+ </ul>
+    </div>
+    
+</body>
+</html>
